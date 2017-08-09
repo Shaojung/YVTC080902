@@ -5,9 +5,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,5 +38,28 @@ public class MainActivity extends AppCompatActivity {
         obj2.put("humi", "83");
         array.put(obj2);
         Log.d("JSON", array.toString());
+    }
+    public void click3(View v)
+    {
+        MyData data = new MyData();
+        data.temp = 35.5;
+        data.humi = 75;
+
+        Gson gson = new Gson();
+        Log.d("GSON", gson.toJson(data));
+    }
+    public void click4(View v)
+    {
+        ArrayList<MyData> mylist = new ArrayList<>();
+        MyData data = new MyData();
+        data.temp = 35.5;
+        data.humi = 75;
+        mylist.add(data);
+        MyData data2 = new MyData();
+        data2.temp = 35.5;
+        data2.humi = 75;
+        mylist.add(data2);
+        Gson gson = new Gson();
+        Log.d("GSON", gson.toJson(mylist));
     }
 }
