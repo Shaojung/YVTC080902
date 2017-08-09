@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.View;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,5 +63,21 @@ public class MainActivity extends AppCompatActivity {
         mylist.add(data2);
         Gson gson = new Gson();
         Log.d("GSON", gson.toJson(mylist));
+    }
+    public void click5(View v)
+    {
+        String str = "{\"humi\":75,\"temp\":35.5}";
+        Gson gson = new Gson();
+        MyData data = gson.fromJson(str, MyData.class);
+        Log.d("JSON", "data:" + data.temp);
+    }
+    public void click6(View v)
+    {
+        String str = "[{\"humi\":75,\"temp\":35.5},{\"humi\":75,\"temp\":35.5}]";
+        Gson gson = new Gson();
+        ArrayList<MyData> mylist = gson.fromJson(str, new TypeToken<List<MyData>>(){}.getType());
+        Log.d("JSON", String.valueOf(mylist.get(0).temp));
+
+
     }
 }
