@@ -21,9 +21,18 @@ public class MainActivity extends AppCompatActivity {
         JSONObject obj = new JSONObject();
         obj.put("temperature", "30.5");
         obj.put("humi", "80");
-
         Log.d("JSON", obj.toString());
-
-
+    }
+    public void click2(View v) throws JSONException {
+        JSONArray array = new JSONArray();
+        JSONObject obj = new JSONObject();
+        obj.put("temperature", "30.5");
+        obj.put("humi", "80");
+        array.put(obj);
+        JSONObject obj2 = new JSONObject();
+        obj2.put("temperature", "31");
+        obj2.put("humi", "83");
+        array.put(obj2);
+        Log.d("JSON", array.toString());
     }
 }
